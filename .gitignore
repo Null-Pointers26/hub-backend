@@ -1,0 +1,41 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go binary (compiled output)
+/bin/
+/dist/
+hub-backend
+
+# Go test artifacts
+*.test
+*.out
+
+# Go module download cache
+vendor/
+
+# Go workspace file (optional – remove if you use Go workspaces)
+go.work
+go.work.sum
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE / editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Air (live reload for Go)
+tmp/
