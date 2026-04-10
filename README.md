@@ -76,6 +76,8 @@ Takže frontend nemusíte znát konkrétní doménu - relativní cesty se vždy 
 
 ## Konfigurace přes ENV
 
+Pro nasazení je potřeba vytvořit .env soubor s potřebnými proměnnými.
+
 Nejdůležitější proměnné:
 - APP_ENV: development nebo production
 - DOMAIN: doména pro certifikát v produkci
