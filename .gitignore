@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+hub-backend.git
 
 # Go binary (compiled output)
 /bin/

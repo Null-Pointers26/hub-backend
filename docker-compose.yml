@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hub-backend
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      DOMAIN: ${DOMAIN}
+      CERT_EMAIL: ${CERT_EMAIL}
+      CERT_CACHE_DIR: ${CERT_CACHE_DIR:-/certs}
+      FRONTEND_TARGET: ${FRONTEND_TARGET:-http://frontend:3000}
+      DEV_LISTEN_ADDR: ${DEV_LISTEN_ADDR:-:8080}
+      HTTP_ADDR: ${HTTP_ADDR:-:80}
+      HTTPS_ADDR: ${HTTPS_ADDR:-:443}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - certs:${CERT_CACHE_DIR:-/certs}
+
+volumes:
+  certs:
