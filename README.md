@@ -40,6 +40,7 @@ Očekávaný tvar každé položky:
   "target": "http://game-chess:3000",
   "icon": "♟",
   "author": "Team",
+  "description": "Hra dvou hráčů...",
   "image": "https://..."
 }
 ```
