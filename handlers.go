@@ -16,6 +16,11 @@ func addGameHandler(w http.ResponseWriter, r *http.Request) {
 	registry.games[game.ID] = &game
 	registry.mu.Unlock()
 
+	if err := registry.SaveToJSON(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(game)
 }
@@ -26,6 +31,11 @@ func removeGameHandler(w http.ResponseWriter, r *http.Request) {
 	registry.mu.Lock()
 	delete(registry.games, id)
 	registry.mu.Unlock()
+
+	if err := registry.SaveToJSON(); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
 	w.WriteHeader(http.StatusNoContent)
 }

@@ -21,11 +21,16 @@ func main() {
 	domain := getEnv("DOMAIN", "localhost")
 	certEmail := os.Getenv("CERT_EMAIL")
 	certCacheDir := getEnv("CERT_CACHE_DIR", "/certs")
+	registry.storagePath = getEnv("REGISTRY_FILE", "/data/games.json")
 	frontendTarget = getEnv("FRONTEND_TARGET", "http://frontend:3000")
 	appEnv := getEnv("APP_ENV", "development")
 	devListenAddr := getEnv("DEV_LISTEN_ADDR", ":8080")
 	httpAddr := getEnv("HTTP_ADDR", ":80")
 	httpsAddr := getEnv("HTTPS_ADDR", ":443")
+
+	if err := registry.LoadFromJSON(); err != nil {
+		fmt.Println("Registry load error:", err)
+	}
 
 	mux := http.NewServeMux()
 
