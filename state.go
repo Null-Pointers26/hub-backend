@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"os"
+	"path/filepath"
 	"sync"
 )
 
@@ -10,6 +11,7 @@ type Game struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
 	Target      string `json:"target"` // např. "http://game-chess:3000"
+	Status      string `json:"status"`
 	Icon        string `json:"icon"`
 	Author      string `json:"author"`
 	Description string `json:"description"`
@@ -23,13 +25,18 @@ type Registry struct {
 }
 
 var registry = &Registry{games: make(map[string]*Game)}
-var frontendTarget = "http://frontend:3000"
+var frontendTarget = "http://localhost:3000"
 
 func (r *Registry) SaveToJSON() error {
 	r.mu.RLock()
 	data, err := json.MarshalIndent(r.games, "", "  ")
 	r.mu.RUnlock()
 	if err != nil {
+		return err
+	}
+
+	dir := filepath.Dir(r.storagePath)
+	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
 	}
 

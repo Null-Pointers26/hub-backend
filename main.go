@@ -21,8 +21,8 @@ func main() {
 	domain := getEnv("DOMAIN", "localhost")
 	certEmail := os.Getenv("CERT_EMAIL")
 	certCacheDir := getEnv("CERT_CACHE_DIR", "/certs")
-	registry.storagePath = getEnv("REGISTRY_FILE", "/data/games.json")
-	frontendTarget = getEnv("FRONTEND_TARGET", "http://frontend:3000")
+	registry.storagePath = getEnv("REGISTRY_FILE", "data/games.json")
+	frontendTarget = getEnv("FRONTEND_TARGET", "http://localhost:3000")
 	appEnv := getEnv("APP_ENV", "development")
 	devListenAddr := getEnv("DEV_LISTEN_ADDR", ":8080")
 	httpAddr := getEnv("HTTP_ADDR", ":80")
@@ -36,6 +36,8 @@ func main() {
 
 	// Veřejné API — seznam her (pro frontend)
 	mux.HandleFunc("GET /api/games", listGamesHandler)
+	mux.HandleFunc("POST /api/games", addGameHandler)
+	mux.HandleFunc("DELETE /api/games/{id}", removeGameHandler)
 
 	// Chráněné API — správa her
 

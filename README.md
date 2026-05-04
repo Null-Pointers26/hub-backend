@@ -38,6 +38,7 @@ Očekávaný tvar každé položky:
   "id": "chess",
   "name": "Chess",
   "target": "http://game-chess:3000",
+  "status": "online",
   "icon": "♟",
   "author": "Team",
   "description": "Hra dvou hráčů...",
