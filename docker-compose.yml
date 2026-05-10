@@ -1,28 +1,45 @@
 services:
   backend:
     build:
-      context: .
+      context: ../backend
       dockerfile: Dockerfile
-    container_name: hub-backend
     restart: unless-stopped
     env_file:
       - path: .env
         required: false
     environment:
-      APP_ENV: ${APP_ENV:-production}
+      APP_ENV: ${APP_ENV:-development}
       DOMAIN: ${DOMAIN}
       CERT_EMAIL: ${CERT_EMAIL}
       CERT_CACHE_DIR: ${CERT_CACHE_DIR:-/certs}
-      FRONTEND_TARGET: ${FRONTEND_TARGET:-http://frontend:3000}
+      FRONTEND_TARGET: ${FRONTEND_TARGET:-http://frontend:5173}
       DEV_LISTEN_ADDR: ${DEV_LISTEN_ADDR:-:8080}
       HTTP_ADDR: ${HTTP_ADDR:-:80}
       HTTPS_ADDR: ${HTTPS_ADDR:-:443}
     ports:
-      - "80:80"
-      - "443:443"
-      - "8080:8080"
+      - "80:8080"
     volumes:
       - certs:${CERT_CACHE_DIR:-/certs}
+    networks:
+      - hub-shared
+  
+  frontend:
+    build:
+      context: ../hub-frontend
+      dockerfile: Dockerfile
+    expose:
+      - "5173"
+    environment:
+      - NODE_ENV=production
+      - PORT=5173
+      - GAMES_API_URL=http://backend:8080/api/games
+    restart: unless-stopped
+    networks:
+      - hub-shared
 
 volumes:
   certs:
+
+networks:
+  hub-shared:
+    external: true

@@ -46,7 +46,65 @@ Očekávaný tvar každé položky:
 }
 ```
 
-### 2) Otevření konkrétní hry
+### 2) Přidání nové hry
+
+Endpoint:
+- POST /api/games
+- Plné URL: https://DOMAIN/api/games
+
+Body požadavku (JSON):
+
+```json
+{
+  "id": "chess",
+  "name": "Chess",
+  "target": "http://chess:3000",
+  "status": "online",
+  "icon": "♟",
+  "author": "Team",
+  "description": "Hra dvou hráčů...",
+  "image": "https://..."
+}
+```
+
+Odpověď:
+- Status: 201 Created
+- Body: JSON se stejnou strukturou hry
+
+Příklad z příkazové řádky:
+
+```bash
+curl -X POST http://localhost:8080/api/games \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": "chess",
+    "name": "Chess",
+    "target": "http://chess:3000",
+    "status": "online",
+    "icon": "♟",
+    "author": "Team",
+    "description": "Hra dvou hráčů pro 2 hráče",
+    "image": "https://example.com/chess.png"
+  }'
+```
+
+### 3) Odebrání hry
+
+Endpoint:
+- DELETE /api/games/{id}
+- Plné URL: https://DOMAIN/api/games/chess
+
+Odpověď:
+- Status: 204 No Content
+- Body: prázdné
+
+Příklad:
+
+```bash
+curl -X DELETE http://localhost:8080/api/games/chess
+```
+
+### 4) Otevření konkrétní hry
 
 Frontend může odkazovat na cestu:
 - https://DOMAIN/games/{id}
