@@ -1,0 +1,22 @@
+\babel@toc {czech}{}\relax 
+\contentsline {section}{\numberline {1}Přehled systému}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Tok požadavku}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}REST API -- přehled endpointů}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Nasazení systému Hub na server}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Požadavky}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Stažení repozitářů}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Konfigurace prostředí}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Vytvoření sdílené Docker sítě}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Spuštění systému}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Instalační skript}{5}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Integrace aplikace (hry) do systému Hub}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Požadavek 1: Práce za reverse proxy}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Požadavek 2: Docker kontejner a sdílená síť}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Požadavek 3: Registrace u backendu}{8}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Registrační skript}{8}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Struktura JSON záznamu hry}{9}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Integrace skriptu do Dockerfile}{10}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Přehled proměnné prostředí pro herní kontejner}{10}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Příklad -- kompletní integrace hry}{11}{section.4}%
+\contentsline {section}{\numberline {5}Odregistrování hry}{12}{section.5}%
+\contentsline {section}{\numberline {6}Řešení problémů}{13}{section.6}%
