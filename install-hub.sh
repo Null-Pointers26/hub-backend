@@ -76,26 +76,26 @@ else
 fi
 
 # ── Konfigurace prostředí ─────────────────────────────────────────────────────
-if [[ ! -f backend/.env ]]; then
-  if [[ -f backend/.env.example ]]; then
-    cp backend/.env.example backend/.env
-    warn "Soubor backend/.env byl vytvořen z .env.example."
-    warn "Upravte backend/.env (zejména DOMAIN a CERT_EMAIL) před ostrým nasazením."
+if [[ ! -f hub-backend/.env ]]; then
+  if [[ -f hub-backend/.env.example ]]; then
+    cp hub-backend/.env.example hub-backend/.env
+    warn "Soubor hub-backend/.env byl vytvořen z .env.example."
+    warn "Upravte hub-backend/.env (zejména DOMAIN a CERT_EMAIL) před ostrým nasazením."
   else
-    warn "Soubor .env.example nenalezen. Vytvořte backend/.env ručně."
+    warn "Soubor .env.example nenalezen. Vytvořte hub-backend/.env ručně."
   fi
 else
-  ok "Soubor backend/.env již existuje, přeskočeno."
+  ok "Soubor hub-backend/.env již existuje, přeskočeno."
 fi
 
 # ── Spuštění systému ──────────────────────────────────────────────────────────
 info "Sestavuji a spouštím Hub (docker compose up --build -d)..."
-docker compose -f backend/docker-compose.yml up --build -d
+docker compose -f hub-backend/docker-compose.yml up --build -d
 
 ok "Hub byl úspěšně spuštěn!"
 echo ""
 echo -e "  Frontend + Backend:  ${CYAN}http://localhost:80${NC}"
 echo -e "  API seznam her:      ${CYAN}http://localhost:80/api/games${NC}"
 echo ""
-echo -e "  Pro logy spusťte:    ${YELLOW}docker compose -f backend/docker-compose.yml logs -f${NC}"
+echo -e "  Pro logy spusťte:    ${YELLOW}docker compose -f hub-backend/docker-compose.yml logs -f${NC}"
 echo ""
