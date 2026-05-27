@@ -75,19 +75,6 @@ else
   ok "Síť '$NETWORK_NAME' vytvořena."
 fi
 
-# ── Konfigurace prostředí ─────────────────────────────────────────────────────
-if [[ ! -f hub-backend/.env ]]; then
-  if [[ -f hub-backend/.env.example ]]; then
-    cp hub-backend/.env.example hub-backend/.env
-    warn "Soubor hub-backend/.env byl vytvořen z .env.example."
-    warn "Upravte hub-backend/.env (zejména DOMAIN a CERT_EMAIL) před ostrým nasazením."
-  else
-    warn "Soubor .env.example nenalezen. Vytvořte hub-backend/.env ručně."
-  fi
-else
-  ok "Soubor hub-backend/.env již existuje, přeskočeno."
-fi
-
 # ── Spuštění systému ──────────────────────────────────────────────────────────
 info "Sestavuji a spouštím Hub (docker compose up --build -d)..."
 docker compose -f hub-backend/docker-compose.yml up --build -d
