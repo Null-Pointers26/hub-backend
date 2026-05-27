@@ -11,8 +11,8 @@
 set -euo pipefail
 
 # ── Konfigurovatelné hodnoty ──────────────────────────────────────────────────
-BACKEND_REPO="${BACKEND_REPO:-https://github.com/<org>/hub-backend.git}"
-FRONTEND_REPO="${FRONTEND_REPO:-https://github.com/<org>/hub-frontend.git}"
+BACKEND_REPO="${BACKEND_REPO:-https://github.com/Null-Pointers26/hub-backend.git}"
+FRONTEND_REPO="${FRONTEND_REPO:-https://github.com/Null-Pointers26/hub-frontend.git}"
 INSTALL_DIR="${INSTALL_DIR:-hub}"
 NETWORK_NAME="hub-shared"
 
@@ -62,7 +62,7 @@ clone_or_pull() {
   fi
 }
 
-clone_or_pull "$BACKEND_REPO"  "backend"
+clone_or_pull "$BACKEND_REPO"  "hub-backend"
 clone_or_pull "$FRONTEND_REPO" "hub-frontend"
 ok "Repozitáře jsou připraveny."
 
